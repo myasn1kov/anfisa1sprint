@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
 
-def description(request):
-    template = 'about/description.html'
+def about(request):
+    template = 'about/about.html'
     return render(request, template)

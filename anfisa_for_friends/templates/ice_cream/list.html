@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}
   Анфиса для друзей. Каталог мороженого
 {% endblock %}
@@ -11,6 +12,27 @@
         <p>{{ ice_cream.description|truncatewords:10 }}</p>
         <a href="{% url 'ice_cream:ice_cream_detail' ice_cream.id %}">подробнее</a>
       </li>
+      <div class="col-6 col-md-4 my-1">
+        <div class="card">
+          <!-- Картинку берём из статики -->
+          <img
+            class="img-fluid card-img-top"
+            height="400"
+            width="300"
+            src="{% static 'img/image-holder.png' %}"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ ice_cream.title }}</h5>
+            <p class="card-text">
+              <!-- Описание обрезано до первых 10ти слов -->
+              {{ ice_cream.description|truncatewords:10 }}
+            </p>
+            <!-- Ссылка на товар 0 -->
+            <a href="{% url 'ice_cream:ice_cream_detail' ice_cream.id %}">подробнее</a>
+            </a>
+          </div>
+        </div>
+      </div>
       {% if not forloop.last %}
         <hr>
       {% endif %}
